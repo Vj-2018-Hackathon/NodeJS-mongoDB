@@ -1,12 +1,15 @@
-﻿var rect = {
-    perimeter: (x, y) => (2 * (x + y)),
-    area : (x,y) => (x*y)
-}
-function solveReact(l, b) {
-    console.log(rect.area(l, b));
-    console.log(rect.perimeter(l, b));
+﻿const http = require('http');
 
-}
+const hostname = 'localhost';
+const port = 3000;
 
-solveReact(2, 3);
-solveReact(0.6);
+const server = http.createServer((req, res) => {
+    console.log(req.headers);
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
+    res.end('<html><body><h1>Hello, World!</h1></body></html>');
+})
+
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
